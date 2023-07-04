@@ -1,0 +1,10 @@
+.grid{
+    
+        display: grid;
+        grid-template-columns: repeat(64, 2fr);
+        grid-template-rows: repeat(24, 2fr);
+        grid-gap: 0px; 
+    
+      
+}
+
