@@ -4,7 +4,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import './App.css';
 
+
+
+
+export function clearBoard(){
+  document.location.reload(false);
+}
+
+
+
 export default function MyAppBar() {
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: 'white' }} style={{ height: 50 }}>
@@ -83,6 +93,7 @@ export default function MyAppBar() {
               marginRight: '8px',
               color: 'black',
             }}
+            onClick={clearBoard}
           >
             Clear Board
           </Typography>

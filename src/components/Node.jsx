@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Node.css';
 
-const Node = ({ onClick, nodeStyle }) => {
+const Node = ({ onClick, nodeStyle ,onMouseOver, onMouseDown, onMouseUp}) => {
   const handleClick = () => {
     onClick();
   };
@@ -11,17 +11,20 @@ const Node = ({ onClick, nodeStyle }) => {
       className="node"
       style={nodeStyle}
       onClick={handleClick}
-      // onMouseOver={onMouseOver}
-      // onMouseLeave={onMouseLeave}
+      onMouseOver={onMouseOver}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
     ></div>
   );
 };
 
 Node.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  // onMouseOver: PropTypes.func.isRequired,
-  // onMouseLeave: PropTypes.func.isRequired,
   nodeStyle: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onMouseOver: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
+  onMouseUp: PropTypes.func.isRequired,
 };
 
 export default Node;

@@ -15,6 +15,7 @@ const Board = () => {
   initialNodeStates[10][50].isFinish = true;
 
   const [nodeStates, setNodeStates] = useState(initialNodeStates);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
     
   const handleNodeClick = (row, col) => {
@@ -24,6 +25,22 @@ const Board = () => {
     // updatedNodeStates[row][col] = !updatedNodeStates[row][col];
     updatedNodeStates[row][col].isWall = !updatedNodeStates[row][col].isWall;
     setNodeStates(updatedNodeStates);
+  };
+
+  const handleNodeMouseOver = (row, col) => {
+    if (isMouseDown) {
+      const updatedNodeStates = [...nodeStates];
+      updatedNodeStates[row][col].isWall = true;
+      setNodeStates(updatedNodeStates);
+    }
+  };
+
+  const handleMouseDown = () => {
+    setIsMouseDown(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsMouseDown(false);
   };
 
   const nodes = [];
@@ -44,6 +61,9 @@ const Board = () => {
           <Node
             nodeStyle={nodeStyle}
             onClick={() => handleNodeClick(row, col)}  
+            onMouseOver={() => handleNodeMouseOver(row, col)}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
             key={`${row}-${col}`}
           />
         );
